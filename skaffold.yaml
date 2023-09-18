@@ -1,0 +1,11 @@
+apiVersion: skaffold/v4beta6
+kind: Config
+metadata:
+  name: sky-connectivity-wizard
+build:
+  artifacts:
+    - image: connectivity-wizard
+      ko: {}
+manifests:
+  rawYaml:
+    - k8s/web.yaml
