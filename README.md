@@ -29,7 +29,7 @@ Create 'customer-x' namespace:
 kubectl create namespace customer-x
 ```
 
-Deploy the application:
+Deploy the application to your local cluster in the default namespace:
 
 ```
 skaffold run
