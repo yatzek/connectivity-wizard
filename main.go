@@ -17,7 +17,7 @@ func main() {
 	app := fiber.New()
 
 	app.Get("/", helloWorld)
-	app.Get("/pods", podHandler)
+	app.Get("/pods", getPodsHandler)
 	app.Get("/deployment", createDeploymentHandler)
 
 	err := app.Listen(":8000")
@@ -34,8 +34,8 @@ func helloWorld(c *fiber.Ctx) error {
 	return c.JSON(Response{"Hello, WorldXXX!"})
 }
 
-func podHandler(c *fiber.Ctx) error {
-	p, err := pods()
+func getPodsHandler(c *fiber.Ctx) error {
+	p, err := getPods()
 	if err != nil {
 		return c.JSON(err)
 	}
@@ -58,7 +58,7 @@ func createDeploymentHandler(c *fiber.Ctx) error {
 // robbed from:
 // https://github.com/kubernetes/client-go/blob/master/examples/in-cluster-client-configuration/main.go
 
-func pods() ([]apiv1.Pod, error) {
+func getPods() ([]apiv1.Pod, error) {
 	clientset, err := clientset()
 	if err != nil {
 		return nil, err

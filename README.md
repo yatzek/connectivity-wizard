@@ -5,7 +5,7 @@ Install kind, skaffold and ko:
 brew install kind skaffold ko
 ```
 
-Install kubectl-netshoot plugin: 
+Install kubectl-netshoot plugin:
 https://github.com/nilic/kubectl-netshoot
 
 
@@ -46,6 +46,6 @@ Test the application from inside a debug container:
 ```
 curl web:8000
 curl web:8000/pods
-curl web:8000/deployment 
+curl web:8000/deployment
 ```
 
