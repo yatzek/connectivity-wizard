@@ -81,8 +81,39 @@ func createDeployment() (*appsv1.Deployment, error) {
 	}
 
 	deploymentsClient := clientset.AppsV1().Deployments("customer-x")
+	deployment := deploymentDefinition()
 
-	deployment := &appsv1.Deployment{
+	// Create Deployment
+	log.Println("Creating deployment...")
+	result, err := deploymentsClient.Create(context.TODO(), deployment, metav1.CreateOptions{})
+	if err != nil {
+		log.Printf("Error creating deployment", err)
+		return nil, err
+	}
+	log.Printf("Created deployment %q.\n", result.GetObjectMeta().GetName())
+	return result, nil
+}
+
+func clientset() (*kubernetes.Clientset, error) {
+	// creates the in-cluster config
+	config, err := rest.InClusterConfig()
+	if err != nil {
+		log.Printf("Error creating in-cluster config", err)
+		return nil, err
+	}
+
+	// creates the clientset
+	clientset, err := kubernetes.NewForConfig(config)
+	if err != nil {
+		log.Printf("Error creating clientset", err)
+		return nil, err
+	}
+
+	return clientset, nil
+}
+
+func deploymentDefinition() *appsv1.Deployment {
+	dep := &appsv1.Deployment{
 		ObjectMeta: metav1.ObjectMeta{
 			Name: "demo-deployment",
 		},
@@ -118,33 +149,7 @@ func createDeployment() (*appsv1.Deployment, error) {
 		},
 	}
 
-	// Create Deployment
-	log.Println("Creating deployment...")
-	result, err := deploymentsClient.Create(context.TODO(), deployment, metav1.CreateOptions{})
-	if err != nil {
-		log.Printf("Error creating deployment", err)
-		return nil, err
-	}
-	log.Printf("Created deployment %q.\n", result.GetObjectMeta().GetName())
-	return result, nil
-}
-
-func clientset() (*kubernetes.Clientset, error) {
-	// creates the in-cluster config
-	config, err := rest.InClusterConfig()
-	if err != nil {
-		log.Printf("Error creating in-cluster config", err)
-		return nil, err
-	}
-
-	// creates the clientset
-	clientset, err := kubernetes.NewForConfig(config)
-	if err != nil {
-		log.Printf("Error creating clientset", err)
-		return nil, err
-	}
-
-	return clientset, nil
+	return dep
 }
 
 func int32Ptr(i int32) *int32 { return &i }
