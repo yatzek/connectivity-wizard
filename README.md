@@ -23,6 +23,12 @@ kubectl create clusterrolebinding default-admin \
  	--serviceaccount=default:default
 ```
 
+Create 'customer-x' namespace:
+
+```
+kubectl create namespace customer-x
+```
+
 Deploy the application:
 
 ```
@@ -39,6 +45,7 @@ Test the application from inside a debug container:
 
 ```
 curl web:8000
-curl web:8000/pods 
+curl web:8000/pods
+curl web:8000/deployment 
 ```
 
