@@ -49,3 +49,15 @@ curl web:8000/pods
 curl web:8000/deployment
 ```
 
+
+
+============================ FRONTEND ============================
+
+```
+npm init -y
+npm install react react-dom
+npm install @types/react @types/react-dom
+npm install --save-dev esbuild
+npm install --save-dev esbuild-sass-plugin
+npm install --save react-router-dom
+```
