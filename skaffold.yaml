@@ -5,7 +5,17 @@ metadata:
 build:
   artifacts:
     - image: connectivity-wizard
-      ko: {}
+      hooks:
+        before:
+        - command: ["make", "build-frontend"]
+      # TODO: this does not work
+      # TODO: move to Dockerfile
+      sync:
+        manual:
+          - src: "kodata/**/*"
+            dest: "/ko-app/"
+      ko:
+        fromImage: busybox # default: gcr.io/distroless/static:nonroot
 manifests:
   rawYaml:
     - k8s/web.yaml

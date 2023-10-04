@@ -57,9 +57,9 @@ CREATE REACT APP:
 npx create-react-app frontend --template typescript
 cd frontend
 # run in development mode
-npm run start 
+npm run start
 
-# build static assets 
+# build static assets
 npm run build
 ```
 
@@ -71,5 +71,5 @@ npx json-server --watch data/db.json --port 8000
 
 Docs:
 
-React tutorial: 	
+React tutorial:
 	https://www.youtube.com/watch?v=j942wKiXFu8

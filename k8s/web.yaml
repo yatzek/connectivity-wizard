@@ -4,7 +4,7 @@ metadata:
   name: web
 spec:
   ports:
-  - port: 8000
+  - port: 8080
     name: http
   selector:
     app: web
@@ -26,4 +26,4 @@ spec:
       - name: web
         image: connectivity-wizard
         ports:
-          - containerPort: 8000
+          - containerPort: 8080
