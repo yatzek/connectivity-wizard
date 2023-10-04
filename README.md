@@ -63,12 +63,13 @@ npm run start
 npm run build
 ```
 
+JSON SERVER:
+```
+cd frontend
+npx json-server --watch data/db.json --port 8000
+```
+
 Docs:
-
-go-with-react: 
-	https://github.com/Coding-with-Robby/go-with-react/tree/main
-	https://www.youtube.com/watch?v=Y7kuW1qyDng
-
 
 React tutorial: 	
 	https://www.youtube.com/watch?v=j942wKiXFu8

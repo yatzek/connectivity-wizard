@@ -21,7 +21,7 @@ func main() {
 	app.Get("/pods", getPodsHandler)
 	app.Get("/deployment", createDeploymentHandler)
 
-	err := app.Listen(":8000")
+	err := app.Listen(":8080")
 	if err != nil {
 		log.Fatal("Error starting server: ", err)
 	}
