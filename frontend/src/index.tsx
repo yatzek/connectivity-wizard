@@ -7,7 +7,10 @@ const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
-  <React.StrictMode>
+  // StrictMode renders components twice (in dev but not in production)
+  // in order to detect any problems with your code and warn you about
+  // them (which can be quite useful).
+  // <React.StrictMode>
     <App />
-  </React.StrictMode>
+  // </React.StrictMode>
 );
