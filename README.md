@@ -49,15 +49,26 @@ curl web:8000/pods
 curl web:8000/deployment
 ```
 
-
-
 ============================ FRONTEND ============================
 
+CREATE REACT APP:
+
 ```
-npm init -y
-npm install react react-dom
-npm install @types/react @types/react-dom
-npm install --save-dev esbuild
-npm install --save-dev esbuild-sass-plugin
-npm install --save react-router-dom
+npx create-react-app frontend --template typescript
+cd frontend
+# run in development mode
+npm run start 
+
+# build static assets 
+npm run build
 ```
+
+Docs:
+
+go-with-react: 
+	https://github.com/Coding-with-Robby/go-with-react/tree/main
+	https://www.youtube.com/watch?v=Y7kuW1qyDng
+
+
+React tutorial: 	
+	https://www.youtube.com/watch?v=j942wKiXFu8

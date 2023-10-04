@@ -5,7 +5,6 @@ import (
 	"log"
 
 	"github.com/gofiber/fiber/v2"
-	"github.com/gofiber/template/html/v2"
 
 	appsv1 "k8s.io/api/apps/v1"
 	apiv1 "k8s.io/api/core/v1"
@@ -15,20 +14,12 @@ import (
 )
 
 func main() {
-	app := fiber.New(fiber.Config{
-		Views: html.New("./views", ".tmpl"),
-	})
-	app.Static("/", "./public")
+	app := fiber.New()
+	app.Static("/", "./frontend/build")
 
-	app.Get("/", home)
 	app.Get("/hello", helloWorld)
 	app.Get("/pods", getPodsHandler)
 	app.Get("/deployment", createDeploymentHandler)
-
-	frontendRoutes := []string{"/", "/about"}
-	for _, route := range frontendRoutes {
-		app.Get(route, home)
-	}
 
 	err := app.Listen(":8000")
 	if err != nil {
@@ -40,9 +31,9 @@ type Response struct {
 	Message string `json:"message"`
 }
 
-func home(c *fiber.Ctx) error {
-	return c.Render("index", fiber.Map{})
-}
+// func home(c *fiber.Ctx) error {
+// 	return c.Render("index", fiber.Map{})
+// }
 
 func helloWorld(c *fiber.Ctx) error {
 	return c.JSON(Response{"Hello, WorldXXX!"})
