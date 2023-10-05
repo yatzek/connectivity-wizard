@@ -24,8 +24,6 @@ const Create = () => {
             // go to homepage
             navigate('/');
         })
-
-
     }
 
     return (
