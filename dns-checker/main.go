@@ -7,7 +7,7 @@ import (
 	"github.com/miekg/dns"
 )
 
-var fqdnToCheck = "potato.com"
+var fqdnToCheck = "www.bbc.co.uk"
 
 func main() {
 	log.Printf("dns check for %s\n", fqdnToCheck)

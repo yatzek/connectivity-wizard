@@ -8,18 +8,13 @@ make run
 Visit http://localhost:8080
 
 
-============================ LOCAL K8S ============================
+## Try it from local k8s
 
-
-Install kind, skaffold and ko:
+Install kind and skaffold:
 
 ```
-brew install kind skaffold ko
+brew install kind skaffold
 ```
-
-Install kubectl-netshoot plugin:
-https://github.com/nilic/kubectl-netshoot
-
 
 Create a kind cluster:
 
@@ -47,23 +42,23 @@ Deploy the application to your local cluster in the default namespace:
 skaffold run
 ```
 
-Attach a debug container to the application:
+Port-forward the application to localhost:8080:
 
 ```
- kubectl netshoot debug web-8674d4b855-4gwmh
+kubectl port-forward service/web 8080:8080
 ```
 
-Test the application from inside a debug container:
+Test the application:
 
 ```
-curl web:8000
-curl web:8000/pods
-curl web:8000/deployment
+curl localhost:8080
+curl localhost:8080/pods
+curl localhost:8080/deployment
 ```
 
-============================ FRONTEND ============================
+## React frontend notes
 
-CREATE REACT APP:
+Create react app:
 
 ```
 npx create-react-app frontend --template typescript
@@ -83,5 +78,4 @@ npx json-server --watch data/db.json --port 8000
 
 Docs:
 
-React tutorial:
-	https://www.youtube.com/watch?v=j942wKiXFu8
+React tutorial: https://www.youtube.com/watch?v=j942wKiXFu8
