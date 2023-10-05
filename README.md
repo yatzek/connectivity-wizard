@@ -1,3 +1,15 @@
+# Conectivity Wizard
+
+## Try it locally
+
+```
+make run
+```
+Visit http://localhost:8080
+
+
+============================ LOCAL K8S ============================
+
 
 Install kind, skaffold and ko:
 
