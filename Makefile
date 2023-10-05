@@ -1,7 +1,10 @@
-.PHONY: build-frontend run
+.PHONY: frontend-dev frontend-build run
 
-build-frontend:
+frontend-dev:
+	npm run start --prefix frontend
+
+frontend-build:
 	npm run build --prefix frontend
 
-run: build-frontend
+run: frontend-build
 	go run main.go
